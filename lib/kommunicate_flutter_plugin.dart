@@ -26,4 +26,8 @@ class KommunicateFlutterPlugin {
   static Future<dynamic> updateUserDetail(dynamic kmUser) async {
     return await _channel.invokeMethod('updateUserDetail', kmUser);
   }
+  
+  static Future<dynamic> updateFcmToken(dynamic token) async {
+    return await _channel.invokeMethod('updateFcmToken', {token: token});
+  }  
 }

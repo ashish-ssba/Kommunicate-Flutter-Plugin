@@ -127,6 +127,16 @@ public class KommunicateFlutterPlugin implements MethodCallHandler {
                     result.error(ERROR, GsonUtils.getJsonFromObject(exception, Exception.class), null);
                 }
             });
+        } else if (call.method.equals("updateFcmToken")) {
+            try {
+
+                Log.i("KOMMUNICATE_JAVA_SDK", (String) call.argument("token") );
+                Kommunicate.updateDeviceToken(context, (String) call.argument("token"));
+                result.success(SUCCESS);
+
+            } catch (Exception e) {
+                result.error(ERROR, e.toString(), null);
+            }
         } else {
             result.notImplemented();
         }
